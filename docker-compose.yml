@@ -1,0 +1,22 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+    tty: true
+    volumes:
+      - app-mysql:/var/lib/mysql
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "8666:8000"
+    volumes:
+      - ./backend:/app # For dev only.
+
+volumes:
+  app-mysql:
