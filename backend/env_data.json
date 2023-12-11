@@ -1,0 +1,5 @@
+{
+    "openai.organization": "<Fill in OpenAI Organization.>",
+    "openai.api_key": "<Fill in OpenAI API Key.>",
+    "openai.top_p": 0.1
+}

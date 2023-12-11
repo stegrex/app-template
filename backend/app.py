@@ -33,3 +33,11 @@ async def filter_items(ids=[], titles=[]):
         for item in items:
             itemsOutput.append(item.to_dictionary())
     return itemsOutput
+
+@app.get("/item/connect-to-openai")
+async def connect_to_openai(messages="[\"Hello ChatGPT.\"]"):
+    if messages:
+        messages = json.loads(messages)
+    service = Service()
+    response = service.connect_to_openai(messages)
+    return response

@@ -17,6 +17,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install virtualenv
 RUN pip3 install "fastapi[all]"
 RUN pip3 install mysql-connector-python
+RUN pip3 install openai
 
 # Deploy Code
 WORKDIR /app
