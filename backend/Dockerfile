@@ -12,7 +12,9 @@ RUN apk add python3
 RUN apk upgrade
 
 # Update Python3 Dependencies
-RUN python3 -m ensurepip --upgrade
+#RUN python3 -m ensurepip --upgrade
+RUN python3 -m venv /venv
+ENV PATH=/venv/bin:$PATH
 RUN pip3 install --upgrade pip
 RUN pip3 install virtualenv
 RUN pip3 install "fastapi[all]"
@@ -24,4 +26,5 @@ WORKDIR /app
 COPY . .
 
 # Run
+ENV PATH=/venv/bin:$PATH
 ENTRYPOINT uvicorn app:app --host 0.0.0.0 --reload
