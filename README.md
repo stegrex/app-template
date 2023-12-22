@@ -35,7 +35,7 @@ docker compose up --build -d
 docker compose build --no-cache
 docker compose down
 
-docker exec -it app-template-1 bash
+docker exec -it app-template-1 /bin/sh
 
 docker compose down --remove-orphans
 ```
