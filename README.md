@@ -2,6 +2,31 @@
 
 ## Environment Setup
 
+### Quick Setup
+- Download and then install Docker Desktop. No need to create a Docker account. Feel free to skip that step. Run Docker Desktop. https://www.docker.com/products/docker-desktop/
+- Download project code via git. Make sure the name of the project is retained. For example:
+```
+/path/to/project/app-template
+```
+- Navigate to the project from the terminal:
+```
+cd /path/to/project/app-template
+```
+- In this directory, run docker compose in order to build and run the BE code in one step:
+```
+docker compose up --build -d
+```
+- Then run the DB database and table creation script to ensure the DB is set up properly. You only need to run this any time there are schema changes to the DB.
+```
+docker exec -it app-template-db-1 /app/startup.sh
+```
+- Once the build is complete, open a browser and navigate to `http://127.0.0.1:8666/docs`
+- If there are any build issues, a quick teardown and rebuild may fix those issues.
+```
+docker compose down
+docker compose up --build -d
+```
+
 ### Docker Commands
 
 #### Compose
