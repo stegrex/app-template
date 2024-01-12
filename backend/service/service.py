@@ -12,7 +12,12 @@ class Service():
         openai.api_key = self.envData["openai.api_key"]
         if not dbDriver:
             dbDriver = MySQLDriver()
-            dbDriver.init_connection("app_template")
+            dbDriver.init_connection(
+                "root",
+                "test",
+                "db",
+                "app_template"
+            )
         self.dbDriver = dbDriver
 
     def upsert_item(self, itemDict):

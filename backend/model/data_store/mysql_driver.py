@@ -8,11 +8,17 @@ from model.data_store.base_driver import BaseDriver
 
 class MySQLDriver(BaseDriver):
 
-    def init_connection(self, dbName):
+    def init_connection(self, user, password, host, dbName):
+        if not user:
+            user = "root"
+        if not password:
+            password = "test"
+        if not host:
+            host = "db"
         self.connection = mysql.connector.connect(
-            user="root",
-            password="test",
-            host="db",
+            user=user,
+            password=password,
+            host=host,
             database=dbName
         )
         self.cursor = self.connection.cursor()
