@@ -10,15 +10,8 @@ class Service():
         self.envData = self._load_env_data()
         openai.organization = self.envData["openai.organization"]
         openai.api_key = self.envData["openai.api_key"]
-        if not dbDriver:
-            dbDriver = MySQLDriver()
-            dbDriver.init_connection(
-                "root",
-                "test",
-                "db",
-                "app_template"
-            )
-        self.dbDriver = dbDriver
+        self._open_db_connection()
+        #self._close_db_connection()
 
     def upsert_item(self, itemDict):
         item = Item()
@@ -62,3 +55,27 @@ class Service():
         envDataText = file.read()
         envData = json.loads(envDataText)
         return envData
+
+    def _open_db_connection(self):
+        if not hasattr(self, "dbDriver"):
+            dbDriver = MySQLDriver()
+            """
+            dbDriver.init_connection(
+                self.envData["mySQLUsername"],
+                self.envData["mySQLPassword"],
+                self.envData["mySQLHost"],
+                "app_template"
+            )
+            """
+            dbDriver.init_connection(
+                "root",
+                "test",
+                "db",
+                "app_template"
+            )
+        self.dbDriver = dbDriver
+
+    def _close_db_connection(self):
+        if not hasattr(self, "dbDriver"):
+            return None
+        self.dbDriver.destruct()

@@ -1,5 +1,8 @@
 {
     "openai.organization": "<Fill in OpenAI Organization.>",
     "openai.api_key": "<Fill in OpenAI API Key.>",
-    "openai.top_p": 0.1
+    "openai.top_p": 0.1,
+    "mySQLHost": "<Fill in MySQL Host.>",
+    "mySQLUsername": "<Fill in MySQL Username.>",
+    "mySQLPassword": "<Fill in MySQL Password.>"
 }
